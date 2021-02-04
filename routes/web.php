@@ -35,3 +35,15 @@ Route::post('/blogs', [BlogController::class, 'store']);
 Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name(
     'blogs.destroy'
 );
+
+Route::get('/blogs/{blog}/show', [BlogController::class, 'show'])->name(
+    'blogs.show'
+);
+
+Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name(
+    'blogs.edit'
+);
+
+Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name(
+    'blogs.update'
+);

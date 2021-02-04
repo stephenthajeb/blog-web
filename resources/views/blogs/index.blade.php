@@ -15,15 +15,14 @@
                         </div>
                     @enderror
                 </div>
-
-                <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Post</button>
+                <div class="flex justify-end mx-2">
+                    <button type="submit" class="bg-blue-500 text-white p-3 rounded mb-2 w-20">Post</button>
                 </div>
             </form>
             @endauth
             @if ($blogs->count())
                 @foreach ($blogs as $blog)
-                    <x-blog :blog="$blog"/>
+                    <x-blog :blog="$blog" :isEdit="false"/>
                 @endforeach
                 {{ $blogs->links() }}
             @else
