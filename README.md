@@ -18,25 +18,3 @@ Admin user has the authorization same as common user but admin user can delete a
 
 ### View the route list
 Type command: php artisan route: list
-+--------+----------+-------------------+---------------+-----------------------------------------------+------------+
-| Domain | Method   | URI               | Name          | Action                                        | Middleware |
-+--------+----------+-------------------+---------------+-----------------------------------------------+------------+
-|        | GET|HEAD | /                 | home          | Closure                                       | web        |
-|        | GET|HEAD | api/user          |               | Closure                                       | api        |
-|        |          |                   |               |                                               | auth:api   |
-|        | GET|HEAD | blogs             | blogs         | App\Http\Controllers\BlogController@index     | web        |
-|        | POST     | blogs             |               | App\Http\Controllers\BlogController@store     | web        |
-|        |          |                   |               |                                               | auth       |
-|        | DELETE   | blogs/{blog}      | blogs.destroy | App\Http\Controllers\BlogController@destroy   | web        |
-|        |          |                   |               |                                               | auth       |
-|        | PUT      | blogs/{blog}      | blogs.update  | App\Http\Controllers\BlogController@update    | web        |
-|        |          |                   |               |                                               | auth       |
-|        | GET|HEAD | blogs/{blog}/edit | blogs.edit    | App\Http\Controllers\BlogController@edit      | web        |
-|        |          |                   |               |                                               | auth       |
-|        | GET|HEAD | blogs/{blog}/show | blogs.show    | App\Http\Controllers\BlogController@show      | web        |
-|        | GET|HEAD | login             | login         | App\Http\Controllers\LoginController@index    | web        |
-|        | POST     | login             |               | App\Http\Controllers\LoginController@login    | web        |
-|        | POST     | logout            | logout        | App\Http\Controllers\LogoutController@logout  | web        |
-|        | GET|HEAD | register          | register      | App\Http\Controllers\RegisterController@index | web        |
-|        | POST     | register          |               | App\Http\Controllers\RegisterController@store | web        |
-+--------+----------+-------------------+---------------+-----------------------------------------------+------------+
