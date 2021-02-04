@@ -30,3 +30,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+Route::post('/blogs', [BlogController::class, 'store']);
+// Info: if the route contain route param, need to give it a new route name.
+Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name(
+    'blogs.destroy'
+);

@@ -14,7 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blogs.index');
+        $blogs = Blog::latest()->paginate(10);
+        return view('blogs.index', ['blogs' => $blogs]);
     }
 
     // /**
@@ -27,15 +28,21 @@ class BlogController extends Controller
     //     //
     // }
 
-    // /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function store(Request $request)
-    // {
-    // }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, ['body' => 'required']);
+        $request
+            ->user()
+            ->blogs()
+            ->create($request->only('body'));
+        return back();
+    }
 
     // /**
     //  * Display the specified resource.
@@ -71,14 +78,16 @@ class BlogController extends Controller
     //     //
     // }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  \App\Models\Blog  $blog
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy(Blog $blog)
-    // {
-    //     //
-    // }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Blog  $blog
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Blog $blog)
+    {
+        // Todo : Check isAdmin & authorization
+        $blog->delete();
+        return back();
+    }
 }
